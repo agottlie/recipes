@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Search by Ingredient</title>
+    <link rel="shortcut icon" href="../../images/guitar.png" />
+    <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <script src="https://unpkg.com/flatpickr"></script>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1 class="title">Search by Ingredient</h1>
+        </div>
+        <form action="/ingredients/" method="GET" class="search-ingredients">
+            <label for="name">Ingredient</label>
+            <br>
+            <input class="ingredient-input" id="name" type="text" name="ingredient[name]" placeholder="Ingredient">
+            <br>
+            <input type="submit" class="button" value="Search for Ingredient">
+        </form>
+    </div>
+    <div style="position:absolute; top:5px; right:50px">
+        <h2><a href="/recipes/new">Add New Recipe</a></h2>
+        <h2><a href="/ingredients/search">Search by Ingredient</a></h2>
+        <h2><a href="/recipes/list">List All Recipes</a></h2>
+    </div>
+</body>
+
+</html>

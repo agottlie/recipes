@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe List</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+    <link rel="shortcut icon" href="../../images/guitar.png" />
+    <link href="https://fonts.googleapis.com/css?family=Metal+Mania" rel="stylesheet">
+    <script src="https://unpkg.com/flatpickr"></script>
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/script.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>All Recipes with {{name}}</h1>
+    </div>
+    {{#data}}
+    <h2><a href="{{link}}">{{name}}</a></h2>
+    <div style="position:relative; left:20px; margin-top:-20px">
+        <h3><a href="" data-id="recipe{{id}}" id="recipe{{id}}" class="recipe">List Ingredients</a></h3>
+        <div class="ingredients" style="display:none">
+            {{#ingredients}}
+            <h4>{{.}}</h4>
+            {{/ingredients}}
+        </div>
+    </div>
+    {{/data}}
+    <div style="position:absolute; top:5px; right:50px">
+        <h2><a href="/recipes/new">Add New Recipe</a></h2>
+        <h2><a href="/ingredients/search">Search by Ingredient</a></h2>
+        <h2><a href="/recipes/list">List All Recipes</a></h2>
+    </div>
+</body>
+
+</html>
