@@ -14,7 +14,11 @@ function getAll() {
 }
 
 function search(ingredient) {
-	return db.query(`SELECT * FROM ingredients WHERE name='${ingredient}'`);
+	if (ingredient[ingredient.length-1] == "s") {
+		ingredient = ingredient.slice(0,-1);
+	}
+	console.log(ingredient);
+	return db.query(`SELECT * FROM ingredients WHERE name LIKE '%${ingredient}%'`);
 }
 
 module.exports = { addAll, getAll, search };
