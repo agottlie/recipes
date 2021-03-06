@@ -32,6 +32,14 @@
             <br>
             <input class="input" id="ingredients" type="text" name="recipe[ingredients]" placeholder="Recipe Ingredients (comma separated">
             <br>
+            <label for="type">Type</label>
+            <br>
+            <select class="input" id="type" name="recipe[type]" placeholder="Recipe Type">
+                <option value="entree">Entree</option>
+                <option value="side">Side</option>
+                <option value="sauce">Sauce</option>
+            </select>
+            <br>
             <input type="submit" class="button" value="Add Recipe">
         </form>
     </div>
@@ -39,6 +47,7 @@
         <h2><a href="/recipes/new">Add New Recipe</a></h2>
         <h2><a href="/ingredients/search">Search by Ingredient</a></h2>
         <h2><a href="/recipes/list">List All Recipes</a></h2>
+        <h2><a href="/recipes/update">Recipe Diary</a></h2>
     </div>
 </body>
 

@@ -17,8 +17,9 @@
     <div>
         <h1>All Recipes with {{name}}</h1>
     </div>
-    {{#data}}
-    <h2><a href="{{link}}">{{name}}</a></h2>
+    <h2>ENTREES</h2>
+    {{#entrees}}
+    <h2><a href="{{link}}">{{name}}</a> - Last eaten: {{date_last_eaten}}</h2>
     <div style="position:relative; left:20px; margin-top:-20px">
         <h3><a href="" data-id="recipe{{id}}" id="recipe{{id}}" class="recipe">List Ingredients</a></h3>
         <div class="ingredients" style="display:none">
@@ -27,11 +28,36 @@
             {{/ingredients}}
         </div>
     </div>
-    {{/data}}
+    {{/entrees}}
+    <h2>SIDES</h2>
+    {{#sides}}
+    <h2><a href="{{link}}">{{name}}</a> - Last eaten: {{date_last_eaten}}</h2>
+    <div style="position:relative; left:20px; margin-top:-20px">
+        <h3><a href="" data-id="recipe{{id}}" id="recipe{{id}}" class="recipe">List Ingredients</a></h3>
+        <div class="ingredients" style="display:none">
+            {{#ingredients}}
+            <h4>{{.}}</h4>
+            {{/ingredients}}
+        </div>
+    </div>
+    {{/sides}}
+    <h2>SAUCES</h2>
+    {{#sauces}}
+    <h2><a href="{{link}}">{{name}}</a> - Last eaten: {{date_last_eaten}}</h2>
+    <div style="position:relative; left:20px; margin-top:-20px">
+        <h3><a href="" data-id="recipe{{id}}" id="recipe{{id}}" class="recipe">List Ingredients</a></h3>
+        <div class="ingredients" style="display:none">
+            {{#ingredients}}
+            <h4>{{.}}</h4>
+            {{/ingredients}}
+        </div>
+    </div>
+    {{/sauces}}
     <div style="position:absolute; top:5px; right:50px">
         <h2><a href="/recipes/new">Add New Recipe</a></h2>
         <h2><a href="/ingredients/search">Search by Ingredient</a></h2>
         <h2><a href="/recipes/list">List All Recipes</a></h2>
+        <h2><a href="/recipes/update">Recipe Diary</a></h2>
     </div>
 </body>
 

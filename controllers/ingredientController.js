@@ -1,7 +1,9 @@
 const Ingredient = require('../models/ingredients');
 const Recipe = require('../models/recipes');
 const router = require('express').Router();
-let ingredientData = {};
+let entrees = [];
+let sauces = [];
+let sides = [];
 let ingredient_name;
 
 router.get('/search', (req, res) => {
@@ -9,7 +11,7 @@ router.get('/search', (req, res) => {
 });
 
 router.get('/list', (req, res) => {
-	res.render('ingredients/list', {data:ingredientData, name:ingredient_name});
+	res.render('ingredients/list', {entrees:entrees,sides:sides,sauces:sauces,name:ingredient_name});
 })
 
 router.get('/:name', (req, res) => {
@@ -38,14 +40,21 @@ router.get('/:name', (req, res) => {
 		.then(data => {
 			let recipe=data;
 			for (let i=0; i<recipe.length; i++) {
+				recipe[i].date_last_eaten = recipe[i].date_last_eaten.toString().slice(4,15);
 				recipe[i].ingredients = []
 				for (let j=0; j<ingredients.length; j++) {
 					if (ingredients[j].recipe_id == recipe[i].id) {
 						recipe[i].ingredients.push(ingredients[j].name);
 					}
 				}
+				if (recipe[i].type == "entree") {
+					entrees.push(recipe[i]);
+				} else if (recipe[i].type == "sauce") {
+					sauces.push(recipe[i]);
+				} else if (recipe[i].type == "side") {
+					sides.push(recipe[i]);
+				}
 			}
-			ingredientData = recipe;
 			res.render('ingredients/list')
 		})
         .catch(err => console.log('ERROR: ', err));

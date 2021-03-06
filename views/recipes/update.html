@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Search by Ingredient</title>
+    <title>Add to Recipe Diary</title>
     <link rel="shortcut icon" href="../../images/guitar.png" />
     <link rel="stylesheet" href="../../css/menu.css">
     <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
@@ -17,14 +17,18 @@
 <body>
     <div class="container">
         <div>
-            <h1 class="title">Search by Ingredient</h1>
+            <h1 class="title">Select Recipe</h1>
         </div>
-        <form action="/ingredients/" method="GET" class="search-ingredients">
-            <label for="name">Ingredient</label>
+        <form action="/recipes/update" method="POST">
+            <label for="type">Choose 1</label>
             <br>
-            <input class="ingredient-input" id="name" type="text" name="ingredient[name]" placeholder="Ingredient">
+            <select class="input" id="id" name="recipe" placeholder="Recipe">
+                {{#recipes}}
+                <option value="{{id}}">{{name}}</option>
+                {{/recipes}}
+            </select>
             <br>
-            <input type="submit" class="button" value="Search for Ingredient">
+            <input type="submit" class="button" value="Add to Diary">
         </form>
     </div>
     <div style="position:absolute; top:5px; right:50px">
