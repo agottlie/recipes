@@ -1,10 +1,6 @@
-//pgp = require('pg-promise')();
+pgp = require('pg-promise')();
 
 
-let ssl = null;
-if (process.env.NODE_ENV === 'development') {
-   ssl = {rejectUnauthorized: false};
-}
 
 const config = {
    host: 'ec2-52-204-232-46.compute-1.amazonaws.com',
@@ -13,7 +9,10 @@ const config = {
    user: 'wrdjznzsfqmdpp',
    password: 'd7b7bb2784157fecbd1d2b9364e60d143a7861878db666e4e109a16d4c300a39',
    max: 30, // use up to 30 connections
-   ssl:ssl
+   ssl: {
+   		rejectUnauthorized: false,
+   		require: true
+   }
 };
 
 const db = pgp(config);
