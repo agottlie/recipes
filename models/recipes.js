@@ -18,11 +18,11 @@ function create(recipe) {
 }
 
 function getAll() {
-	return db.query(`SELECT * FROM recipes ORDER BY date_last_eaten DESC`);
+	return db.query(`SELECT * FROM recipes ORDER BY date_last_eaten ASC`);
 }
 
 function getSome(list) {
-	return db.query(`SELECT * FROM recipes WHERE id IN ${list} ORDER BY date_last_eaten DESC`);
+	return db.query(`SELECT * FROM recipes WHERE id IN ${list} ORDER BY date_last_eaten ASC`);
 }
 
 function update(id) {
