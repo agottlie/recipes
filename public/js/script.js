@@ -16,7 +16,7 @@ $(() => {
     $('.search-ingredients').on('submit', (e) => {
         e.preventDefault();
 
-        const name = $('.ingredient-input').val();
+        let name = $('.ingredient-input').val();
 
         $.ajax({
             method: 'GET',

@@ -7,6 +7,7 @@ CREATE TABLE recipes (
 	name VARCHAR(255),
 	type VARCHAR(255),
 	link VARCHAR(255),
+	page VARCHAR(255),
 	date_last_eaten DATE NOT NULL
 );
 

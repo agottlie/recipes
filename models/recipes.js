@@ -10,24 +10,22 @@ function create(recipe) {
 	let prefix2 = 'http://';
 	let correct_link = recipe.link;
 
-	if (!((correct_link.substr(0, prefix.length) == prefix) || (correct_link.substr(0,prefix2.length) == prefix2))) {
+
+	if (!((correct_link.substr(0, prefix.length) == prefix) || (correct_link.substr(0,prefix2.length) == prefix2)) && (correct_link != "")) {
 	    correct_link = prefix2 + correct_link;
 	}
-	console.log(recipe);
-	return db.oneOrNone(`INSERT INTO recipes (name, link, type, date_last_eaten) VALUES ($1, $2, $3, $4) RETURNING *;`, [recipe.name, correct_link, recipe.type, today]);
+	return db.oneOrNone(`INSERT INTO recipes (name, link, type, date_last_eaten, page) VALUES ($1, $2, $3, $4, $5) RETURNING *;`, [recipe.name, correct_link, recipe.type, today, recipe.page]);
 }
 
 function getAll() {
-	return db.query(`SELECT * FROM recipes ORDER BY date_last_eaten ASC`);
+	return db.query(`SELECT * FROM recipes ORDER BY date_last_eaten DESC`);
 }
 
 function getSome(list) {
-	return db.query(`SELECT * FROM recipes WHERE id IN ${list} ORDER BY date_last_eaten ASC`);
+	return db.query(`SELECT * FROM recipes WHERE id IN ${list} ORDER BY date_last_eaten DESC`);
 }
 
 function update(id) {
-	console.log(id);
-	console.log(today)
 	return db.oneOrNone(`UPDATE recipes SET date_last_eaten='${today}' WHERE id=${id}`)
 }
 

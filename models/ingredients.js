@@ -17,7 +17,6 @@ function search(ingredient) {
 	if (ingredient[ingredient.length-1] == "s") {
 		ingredient = ingredient.slice(0,-1);
 	}
-	console.log(ingredient);
 	return db.query(`SELECT * FROM ingredients WHERE name LIKE '%${ingredient}%'`);
 }
 

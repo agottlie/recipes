@@ -6,7 +6,6 @@ router.post('/update', (req, res) => {
 	Recipe
 		.update(req.body.recipe)
 		.then(data => {
-			console.log("HI");
 			res.redirect('/recipes/list');
 		})
 		.catch(err => console.log('ERROR: ', err));
@@ -31,7 +30,6 @@ router.get('/update', (req, res) => {
 		.getAll()
 		.then(data => {
 			let recipes=data;
-			console.log(data);
 			res.render('recipes/update', {recipes:recipes});
 		})
 })
@@ -45,27 +43,40 @@ router.get('/list', (req, res) => {
 			return Recipe.getAll();
 		})
 		.then(data => {
-			let recipe=data;
-			let entrees = [];
-			let sauces = [];
-			let sides = [];
-			for (let i=0; i<recipe.length; i++) {
-				recipe[i].date_last_eaten = recipe[i].date_last_eaten.toString().slice(4,15);
-				recipe[i].ingredients = []
+			let recipes = {
+				types: [
+					{
+						name: "Entrees",
+						recipe_list: []
+					},
+					{
+						name: "Sides",
+						recipe_list: []
+					},
+					{
+						name: "Sauces",
+						recipe_list: []
+					}
+				]
+			}
+			for (let i=0; i<data.length; i++) {
+				data[i].date_last_eaten = data[i].date_last_eaten.toString().slice(4,15);
+				data[i].ingredients = []
 				for (let j=0; j<ingredients.length; j++) {
-					if (ingredients[j].recipe_id == recipe[i].id) {
-						recipe[i].ingredients.push(ingredients[j].name);
+					if (ingredients[j].recipe_id == data[i].id) {
+						data[i].ingredients.push(ingredients[j].name);
 					}
 				}
-				if (recipe[i].type == "entree") {
-					entrees.push(recipe[i]);
-				} else if (recipe[i].type == "sauce") {
-					sauces.push(recipe[i]);
-				} else if (recipe[i].type == "side") {
-					sides.push(recipe[i]);
+				if (data[i].type == "entree") {
+					recipes.types[0].recipe_list.push(data[i]);
+				} else if (data[i].type == "side") {
+					recipes.types[1].recipe_list.push(data[i]);
+				} else if (data[i].type == "sauce") {
+					recipes.types[2].recipe_list.push(data[i]);
 				}
 			}
-			res.render('recipes/list', {entrees:entrees,sides:sides,sauces:sauces})
+			console.log(recipes);
+			res.render('recipes/list', {recipes: recipes})
 		})
 		.catch(err => console.log('ERROR: ', err));
 });
