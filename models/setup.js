@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const config = {
-   host: 'localhost',
+   host: 'ec2-52-204-232-46.compute-1.amazonaws.com',
    port: 5432,
    database: 'dcj3qa2r6sd8pl',
    user: 'wrdjznzsfqmdpp',
