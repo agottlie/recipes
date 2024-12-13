@@ -12,12 +12,7 @@ const config = {
    port: 5432,
    database: 'recipes_jqcm',
    user: 'recipes_jqcm_user',
-   password: 'mHyLWXEGLGSN2gAOXNEzUaKibb1u2xy0',
-   max: 30, // use up to 30 connections
-   ssl: {
-        rejectUnauthorized: false,
-        require: true
-   }
+   password: 'mHyLWXEGLGSN2gAOXNEzUaKibb1u2xy0'
 };
 const db = pgp(config);
 
